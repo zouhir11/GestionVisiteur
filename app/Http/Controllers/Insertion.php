@@ -12,7 +12,7 @@ use App\Visite;
 use App\Visite_droitacce;
 use App\Visite_service;
 use App\Visiteur;
-class test extends Controller
+class insertion extends Controller
 {
     public function test1()
     {
@@ -157,4 +157,57 @@ class test extends Controller
         $var3->num_visite=3;
         $var3->save();
     }
+
+    public function test8()
+    {
+        $var1=new Role();
+        $var1->nom_role="num_role1";
+        $var1->save();
+
+        $var2=new Role();
+        $var2->nom_role="num_role2";
+        $var2->save();
+
+        $var3=new Role();
+        $var3->nom_role="num_role3";
+        $var3->save();
+    }
+
+    public function test9()
+    {
+        $var1=new Personnel();
+        $var1->cin_personne="cin_personne1";
+        $var1->num_role=2;
+        $var1->num_service="num1";
+        $var1->nom_personne="nom_personne1";
+        $var1->prenom_personne="prenom_personne1";
+        $var1->type_personne="type_personne1";
+        $var1->email="email1";
+        $var1->mot_passe="mot_passe1";
+        $var1->save();
+
+        $var2=new Personnel();
+        $var2->cin_personne="cin_personne2";
+        $var2->num_role=2;
+        $var2->num_service="num3";
+        $var2->nom_personne="nom_personne2";
+        $var2->prenom_personne="prenom_personne2";
+        $var2->type_personne="type_personne2";
+        $var2->email="email2";
+        $var2->mot_passe="mot_passe2";
+        $var2->save();
+
+        $var3=new Personnel();
+        $var3->cin_personne="cin_personne3";
+        $var3->num_role=1;
+        $var3->num_service="num2";
+        $var3->nom_personne="nom_personne3";
+        $var3->prenom_personne="prenom_personne3";
+        $var3->type_personne="type_personne3";
+        $var3->email="email3";
+        $var3->mot_passe="mot_passe3";
+        $var3->save();
+
+    }
+
 }
