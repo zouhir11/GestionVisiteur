@@ -48,17 +48,17 @@ class insertion extends Controller
     {
         $var1=new Service();
         $var1->num_service='num1';
-        $var1->nom_service='nom1';
+        $var1->nom_service='service1';
         $var1->save();
 
         $var2=new Service();
         $var2->num_service='num2';
-        $var2->nom_service='nom2';
+        $var2->nom_service='service2';
         $var2->save();
 
         $var3=new Service();
         $var3->num_service='num3';
-        $var3->nom_service='nom3';
+        $var3->nom_service='service3';
         $var3->save();
     }
 

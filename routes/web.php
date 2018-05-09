@@ -16,16 +16,16 @@ Route::get('/', function () {
 });
 
 
-route::get('/test1','insertion@test1');
-route::get('/test2','insertion@test2');
-route::get('/test3','insertion@test3');
-route::get('/test4','insertion@test4');
-route::get('/test5','insertion@test5');
-route::get('/test6','insertion@test6');
-route::get('/test7','insertion@test7');
+route::get('/insert1','insertion@test1');
+route::get('/insert2','insertion@test2');
+route::get('/insert3','insertion@test3');
+route::get('/insert4','insertion@test4');
+route::get('/insert5','insertion@test5');
+route::get('/insert6','insertion@test6');
+route::get('/insert7','insertion@test7');
 
-route::get('/test8','insertion@test8');
-route::get('/test9','insertion@test9');
+route::get('/insert8','insertion@test8');
+route::get('/insert9','insertion@test9');
 
 
 Route::get('/visiteur_pe', function () {
@@ -40,6 +40,7 @@ Route::get('/Personnel_Auth', function () {
     return view('zouhir.Personnel_Authentification');
 });
 
-Route::get('/zz', function () {
-    return view('zouhir.');
-});
+route::get('/visiteur_pe','Insert_PreE@get_service');
+route::get('/visiteur_pe','Insert_PreE@get_service');
+route::POST('/visiteur_pe','Insert_PreE@insert_visiteur');
+//route::get('/visiteur_pe','Insert_PreE@get_motif');
