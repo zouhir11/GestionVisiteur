@@ -1,7 +1,8 @@
 @extends('zouhir.Form_Base')
 @section('content2')
     <!-- <a class="btn btn-primary" href="visit3">Personnel</a>-->
-    <!--Personnel-->-
+    <!--Personnel-->
+    -
 @endsection
 @section('content')
     <header class="masthead text-white text-center">
@@ -12,19 +13,20 @@
                     <h1 >Authentification</h1>
                 </div>
                 <div class="col-md-10 col-lg-8 col-xl-7 mx-auto">
-                    <form>
+                    <form action="/modifier_visiteur" method="POST">
+                        {{ csrf_field() }}
                         <div class="form-row">
                             <div class="col-12 col-md-12 mb-2 mb-md-0">
                                 <br>
-                                <input type="email" class="form-control form-control-lg" placeholder="Nom">
+                                <input type="text" name="Nom" class="form-control form-control-lg" placeholder="Nom">
                             </div>
                             <div class="col-12 col-md-12 mb-2 mb-md-0">
                                 <br>
-                                <input type="email" class="form-control form-control-lg" placeholder="Prenom">
+                                <input type="text" name="Prenom" class="form-control form-control-lg" placeholder="Prenom">
                             </div>
                             <div class="col-12 col-md-12 mb-2 mb-md-0">
                                 <br>
-                                <input type="email" class="form-control form-control-lg" placeholder="Cin:">
+                                <input type="text" name="Cin" class="form-control form-control-lg" placeholder="Cin:">
                             </div>
                             <div class="col-12 col-md-12 mb-2 mb-md-0">
                                 <br>

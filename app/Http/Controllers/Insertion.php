@@ -99,24 +99,24 @@ class insertion extends Controller
     public function test5()
     {
         $var1=new Visite();
-        $var1->cin='cin1';
-        $var1->num_motif='1';
+        $var1->id_visiteurs='1';
+        $var1->id_motif='1';
         $var1->date_visite='2018-05-01';
         $var1->heure_entrer='2018-05-01 06:11:12';
         $var1->heure_sortie='2018-05-01 09:11:12';
         $var1->save();
 
         $var2=new Visite();
-        $var2->cin='cin2';
-        $var2->num_motif='3';
+        $var2->id_visiteurs='2';
+        $var2->id_motif='3';
         $var2->date_visite='1999-02-06';
         $var2->heure_entrer='2018-05-01 06:11:12';
         $var2->heure_sortie='2018-05-01 10:11:12';
         $var2->save();
 
         $var3=new Visite();
-        $var3->cin='cin3';
-        $var3->num_motif='2';
+        $var3->id_visiteurs='3';
+        $var3->id_motif='2';
         $var3->date_visite='2018-05-01 06:11:12';
         $var3->heure_entrer='2018-05-01 06:11:12';
         $var3->heure_sortie='2018-05-01 09:11:12';
@@ -126,35 +126,35 @@ class insertion extends Controller
     public function test6()
     {
         $var1=new Visite_droitacce();
-        $var1->num_droit=1;
-        $var1->num_visite=2;
+        $var1->id_droit=1;
+        $var1->id_visite=2;
         $var1->save();
 
         $var2=new Visite_droitacce();
-        $var2->num_droit=2;
-        $var2->num_visite=2;
+        $var2->id_droit=2;
+        $var2->id_visite=2;
         $var2->save();
 
         $var3=new Visite_droitacce();
-        $var3->num_droit=3;
-        $var3->num_visite=2;
+        $var3->id_droit=3;
+        $var3->id_visite=2;
         $var3->save();
     }
     public function test7()
     {
         $var1=new Visite_service();
-        $var1->num_service="num2";
-        $var1->num_visite=1;
+        $var1->id_service="1";
+        $var1->id_visite=4;
         $var1->save();
 
         $var2=new Visite_service();
-        $var2->num_service="num1";
-        $var2->num_visite=2;
+        $var2->id_service="2";
+        $var2->id_visite=2;
         $var2->save();
 
         $var3=new Visite_service();
-        $var3->num_service="num3";
-        $var3->num_visite=3;
+        $var3->id_service="3";
+        $var3->id_visite=3;
         $var3->save();
     }
 
@@ -176,34 +176,34 @@ class insertion extends Controller
     public function test9()
     {
         $var1=new Personnel();
-        $var1->cin_personne="cin_personne1";
-        $var1->num_role=2;
-        $var1->num_service="num1";
-        $var1->nom_personne="nom_personne1";
-        $var1->prenom_personne="prenom_personne1";
-        $var1->type_personne="type_personne1";
+        $var1->cin_personnel="cin_personne1";
+        $var1->id_role=2;
+        $var1->id_service="1";
+        $var1->nom_personnel="nom_personne1";
+        $var1->prenom_personnel="prenom_personne1";
+        $var1->type_personnel="type_personne1";
         $var1->email="email1";
         $var1->mot_passe="mot_passe1";
         $var1->save();
 
         $var2=new Personnel();
-        $var2->cin_personne="cin_personne2";
-        $var2->num_role=2;
-        $var2->num_service="num3";
-        $var2->nom_personne="nom_personne2";
-        $var2->prenom_personne="prenom_personne2";
-        $var2->type_personne="type_personne2";
+        $var2->cin_personnel="cin_personne2";
+        $var2->id_role=2;
+        $var2->id_service="3";
+        $var2->nom_personnel="nom_personne2";
+        $var2->prenom_personnel="prenom_personne2";
+        $var2->type_personnel="type_personne2";
         $var2->email="email2";
         $var2->mot_passe="mot_passe2";
         $var2->save();
 
         $var3=new Personnel();
-        $var3->cin_personne="cin_personne3";
-        $var3->num_role=1;
-        $var3->num_service="num2";
-        $var3->nom_personne="nom_personne3";
-        $var3->prenom_personne="prenom_personne3";
-        $var3->type_personne="type_personne3";
+        $var3->cin_personnel="cin_personne3";
+        $var3->id_role=1;
+        $var3->id_service="2";
+        $var3->nom_personnel="nom_personne3";
+        $var3->prenom_personnel="prenom_personne3";
+        $var3->type_personnel="type_personne3";
         $var3->email="email3";
         $var3->mot_passe="mot_passe3";
         $var3->save();

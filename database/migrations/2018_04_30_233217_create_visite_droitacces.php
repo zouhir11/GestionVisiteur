@@ -15,20 +15,21 @@ class CreateVisiteDroitacces extends Migration
     {
         Schema::create('visite_droitacces', function (Blueprint $table) {
 
-            $table->integer('num_droit')->unsigned();
-            $table->integer('num_visite')->unsigned();
+            $table->increments('id');
+            $table->integer('id_droit')->unsigned();
+            $table->integer('id_visite')->unsigned();
 
-            $table->foreign('num_droit')
-                ->references('num_droit')->on('droitacces')
-                ->onDelete('restrict')
-                ->onUpdate('restrict');
+            $table->foreign('id_droit')
+                ->references('id')->on('droitacces')
+                ->onDelete('CASCADE')
+                ->onUpdate('CASCADE');
 
-            $table->foreign('num_visite')
-                ->references('num_visite')->on('visites')
-                ->onDelete('restrict')
-                ->onUpdate('restrict');
+            $table->foreign('id_visite')
+                ->references('id')->on('visites')
+                ->onDelete('CASCADE')
+                ->onUpdate('CASCADE');
 
-            $table->primary('num_droit', 'num_visite');
+            //$table->primary('num_droit', 'num_visite');
 
             $table->timestamps();
         });

@@ -14,10 +14,10 @@ class CreateServicesTable extends Migration
     public function up()
     {
         Schema::create('services', function (Blueprint $table) {
-            $table->string('num_service', 254);
+            $table->increments('id');
+            $table->string('num_service', 254)->unique();
             $table->string('nom_service', 254);
-
-            $table->primary('num_service');
+            //$table->primary('num_service');
 
             $table->timestamps();
         });

@@ -14,17 +14,18 @@ class CreateVisiteursTable extends Migration
     public function up()
     {
         Schema::create('visiteurs', function (Blueprint $table) {
-            $table->string('cin', 254);
+            $table->increments('id');
+            $table->string('cin', 254)->unique();
             $table->string('nom', 254);
             $table->string('prenom', 254);
-            $table->string('email', 254);
+            $table->string('email', 254)->unique();
             $table->string('tel', 254);
             $table->string('provenance', 254);
             $table->string('motif', 254);
             $table->string('nom_service', 254);
             $table->date('date_visite', 254);
 
-            $table->primary('cin');
+           // $table->primary('cin');
 
             $table->timestamps();
         });

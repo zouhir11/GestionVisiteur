@@ -14,7 +14,7 @@ class CreateMotifsTable extends Migration
     public function up()
     {
         Schema::create('motifs', function (Blueprint $table) {
-            $table->increments('num_motif');
+            $table->increments('id');
             $table->string('motif', 254);
             $table->timestamps();
         });

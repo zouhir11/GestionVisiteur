@@ -15,16 +15,17 @@ class CreateVisites extends Migration
     {
         Schema::create('visites', function (Blueprint $table) {
 
-            $table->increments('num_visite');
+            $table->increments('id');
 
-            $table->string('cin', 254);
-            $table->foreign('cin')->references('cin')->on('visiteurs')
-                ->onDelete('RESTRICT')
+            $table->integer('id_visiteurs')->unsigned();
+            $table->integer('id_motif')->unsigned();
+
+            $table->foreign('id_visiteurs')->references('id')->on('visiteurs')
+                ->onDelete('CASCADE')
                 ->onUpdate('CASCADE');
 
-            $table->integer('num_motif')->unsigned();
-            $table->foreign('num_motif')->references('num_motif')->on('motifs')
-                ->onDelete('RESTRICT')
+            $table->foreign('id_motif')->references('id')->on('motifs')
+                ->onDelete('CASCADE')
                 ->onUpdate('CASCADE');
 
             $table->dateTime('date_visite');

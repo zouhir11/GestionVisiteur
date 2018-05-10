@@ -14,21 +14,21 @@ class CreateVisiteServices extends Migration
     public function up()
     {
         Schema::create('visite_services', function (Blueprint $table) {
+            $table->increments('id');
+            $table->integer('id_service')->unsigned();
+            $table->integer('id_visite')->unsigned();
 
-            $table->string('num_service', 254);
-            $table->integer('num_visite')->unsigned();
+            $table->foreign('id_service')
+                ->references('id')->on('services')
+                ->onDelete('CASCADE')
+                ->onUpdate('CASCADE');
 
-            $table->foreign('num_service')
-                ->references('num_service')->on('services')
-                ->onDelete('restrict')
-                ->onUpdate('restrict');
+            $table->foreign('id_visite')
+                ->references('id')->on('visites')
+                ->onDelete('CASCADE')
+                ->onUpdate('CASCADE');
 
-            $table->foreign('num_visite')
-                ->references('num_visite')->on('visites')
-                ->onDelete('restrict')
-                ->onUpdate('restrict');
-
-            $table->primary('num_service', 'num_visite');
+            //$table->primary('num_service', 'num_visite');
 
             $table->timestamps();
         });

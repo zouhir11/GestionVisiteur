@@ -14,7 +14,8 @@ class CreateDroitaccesTable extends Migration
     public function up()
     {
         Schema::create('droitacces', function (Blueprint $table) {
-            $table->increments('num_droit');
+            $table->increments('id');
+            //$table->increments('num_droit');
             $table->string('libelle', 254);
 
 

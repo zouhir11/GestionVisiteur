@@ -44,3 +44,7 @@ route::get('/visiteur_pe','Insert_PreE@get_service');
 route::get('/visiteur_pe','Insert_PreE@get_service');
 route::POST('/visiteur_pe','Insert_PreE@insert_visiteur');
 //route::get('/visiteur_pe','Insert_PreE@get_motif');
+
+Route::POST('/modifier_visiteur','Modifier_visiteur@get_visiteur');
+
+Route::POST('/ajouter_modification_visiteur','Modifier_visiteur@enregistrer_modification_visiteurs');
