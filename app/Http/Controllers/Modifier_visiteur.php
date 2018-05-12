@@ -62,7 +62,7 @@ class Modifier_visiteur extends Controller
                 $id=$Visiteur->id;
                 foreach ($visite as $Visite)
                 {
-                    if($Visite->id_visiteur==$id)
+                    if($Visite->id_visiteur==$id && $Visite->etat_visite=="En Cours")
                     {
                         $tableau_visite[$j]=$Visite;
                         $j=$j+1;
@@ -76,7 +76,6 @@ class Modifier_visiteur extends Controller
 
     }
 
-
     public function mes_visites_get($id)
     {
         $tableau_visite=array();
@@ -84,7 +83,7 @@ class Modifier_visiteur extends Controller
         $visite=Visite::all();
                 foreach ($visite as $Visite)
                 {
-                    if($Visite->id_visiteur==$id)
+                    if($Visite->id_visiteur==$id && $Visite->etat_visite=="En Cours")
                     {
                         $tableau_visite[$j]=$Visite;
                         $j=$j+1;
@@ -100,15 +99,12 @@ class Modifier_visiteur extends Controller
 
     public function Mon_Profil($id)
     {
-        //$cin=$request->input('Cin');
         $visiteur=Visiteur::find($id);
         return view('zouhir.Mon_Profil',compact('visiteur'));
     }
 
-    public function modifier_profil(Request $request)
+    public function Modifier_Profil(Request $request)
     {
-        /*$cin=$request->input('Cin');
-        $visiteur=Visiteur::where('cin',"$cin");*/
         if ($request->isMethod('POST'))
         {
             $ci = $request->input('Cin');
@@ -121,7 +117,7 @@ class Modifier_visiteur extends Controller
             $visiteur->tel = $request->input('Tel');
             $visiteur->provenance = $request->input('Provenance');
             $visiteur->save();
-            return view('zouhir.Modifier_Visiteur',compact('visiteur'));
+            return view('zouhir.Mon_Profil',compact('visiteur'));
         }
     }
 
@@ -135,6 +131,15 @@ class Modifier_visiteur extends Controller
         $service=Service::all();
         $motif=Motif::all();
         //$cin=$request->input('Cin');
+        $visiteur=Visiteur::find($id);
+        return view('zouhir.Nouvelle_Visite',compact('visiteur','service','motif'));
+    }
+
+    public function Nouvelle_Visite_post($id)
+    {
+        $service=Service::all();
+        $motif=Motif::all();
+
         $visiteur=Visiteur::find($id);
         return view('zouhir.Nouvelle_Visite',compact('visiteur','service','motif'));
     }

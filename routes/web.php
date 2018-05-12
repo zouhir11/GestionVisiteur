@@ -50,7 +50,6 @@ Route::get('/visiteur_Auth', function () {
 /* -----------------------------------------Pré Enregistremet---------------------------------------------*/
 
 route::get('/visiteur_pe','Insert_PreE@get_service');
-route::get('/visiteur_pe','Insert_PreE@get_service');
 route::POST('/insert_visiteur_visite','Insert_PreE@insert_visiteur_visite');
 
 /* -----------------------------------------FIN Pré Enregistremet ----------------------------------------*/
@@ -68,8 +67,9 @@ Route::POST('/autentifier_visiteur','Modifier_visiteur@autentifier_visiteur');
 /* ---------------------------------------MODIFIER PROFIL VISITEUR --------------------------------------*/
 
 Route::POST('/ajouter_modification_visiteur','Modifier_visiteur@enregistrer_modification_visiteurs');
-Route::Post('/modifier_profil','Modifier_visiteur@modifier_profil');
-Route::get('/Mon_Profil1/{id}','Modifier_visiteur@Mon_Profil');
+//Route::Post('/modifier_profil','Modifier_visiteur@modifier_profil');
+Route::get('/Mon_Profil/{id}','Modifier_visiteur@Mon_Profil');
+Route::POST('/Modifier_Profil','Modifier_visiteur@Modifier_Profil');
 
 /* -----------------------------------FIN MODIFIER PROFIL VISITEUR----------------------------------------*/
 
@@ -78,6 +78,7 @@ Route::get('/Mon_Profil1/{id}','Modifier_visiteur@Mon_Profil');
 /* -------------------------------------AJOUTER NOVELLE VISITE--------------------------------------------*/
 
 Route::get('/Nouvelle_Visite/{id}','Modifier_visiteur@Nouvelle_Visite');
+Route::post('/Nouvelle_Visite_post/{id}','Modifier_visiteur@Nouvelle_Visite_post');
 Route::Post('/ajouter_nouvelle_visite/{id}','Modifier_visiteur@ajouter_nouvelle_visite');
 
 /* -----------------------------------FIN AJOUTER NOVELLE VISITE------------------------------------------*/
@@ -92,3 +93,4 @@ Route::get('/mes_visites_get/{id}','Modifier_visiteur@mes_visites_get');
 /*-------------------------------------------FIN MES VISITES------------------------------------------------*/
 
 /*-------------------------------------------FIN ROUTE ZOUHIR----------------------------------------------*/
+

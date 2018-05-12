@@ -1,10 +1,17 @@
 @extends('zouhir.Form_Base')
 @section('menu_visiteur')
-    <a href="/Mon_Profil1/{{$visiteur->id}}"><h6>Mon Profil</h6></a>
+    <a href="/Mon_Profil/{{$visiteur->id}}"><h6>Mon Profil</h6></a>
     <a href="/mes_visites_get/{{$visiteur->id}}"><h6>Mes Visites</h6></a>
     <a href="/Nouvelle_Visite/{{$visiteur->id}}"><h6>Nouvelle Visite</h6></a>
-    <a href="/visiteur_Auth"></a>
+    <a class="btn btn-primary" href="/visiteur_pe">Deconexion</a>
 @endsection
+
+<script type="text/javascript">
+    function verif(argument) {
+        return confirm('are you sur....?');
+    }
+</script>
+
 @section('content')
     <header class="masthead text-white text-center">
         <div class="overlay"></div>
@@ -14,7 +21,7 @@
                     <h1 >Modifier Profil</h1>
                 </div>
                 <div class="col-md-10 col-lg-8 col-xl-7 mx-auto">
-                    <form action="/modifier_profil" method="POST" >
+                    <form action="/Modifier_Profil" method="POST" onsubmit="return verif();">
                         {{ csrf_field() }}
                         <div class="form-row">
                             <div class="col-12 col-md-12 mb-2 mb-md-0">

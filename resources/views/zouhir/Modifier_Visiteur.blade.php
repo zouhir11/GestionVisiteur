@@ -1,6 +1,6 @@
 @extends('zouhir.Form_Base')
 @section('menu_visiteur')
-    <a href="/Mon_Profil1/{{$visiteur->id}}"><h6>Mon Profil</h6></a>
+    <a href="/Mon_Profi1/{{$visiteur->id}}"><h6>Mon Profil</h6></a>
     <a href="/mes_visites/{{$visiteur->id}}"><h6>Mes Visites</h6></a>
     <a href="/Nouvelle_Visite/{{$visiteur->id}}"><h6>Nouvelle Visite</h6></a>
     <a href="/visiteur_Auth"></a>

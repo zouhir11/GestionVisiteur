@@ -70,7 +70,7 @@
                             </div>
                             <div class="col-12 col-md-12 mb-2 mb-md-0">
                                 <br>
-                                <button type="submit" class="btn btn-block btn-lg btn-primary">Enregistrement</button>
+                                <button type="submit" class="btn btn-block btn-lg btn-primary">Enregistrer</button>
                             </div>
                             <div class="col-12 col-md-3">
                             </div>

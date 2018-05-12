@@ -1,9 +1,9 @@
 @extends('zouhir.Form_Base')
 @section('menu_visiteur')
-    <a href="/Mon_Profil1/{{$visiteur->id}}"><h6>Mon Profil</h6></a>
+    <a href="/Mon_Profil/{{$visiteur->id}}"><h6>Mon Profil</h6></a>
     <a href="/mes_visites_get/{{$visiteur->id}}"><h6>Mes Visites</h6></a>
     <a href="/Nouvelle_Visite/{{$visiteur->id}}"><h6>Nouvelle Visite</h6></a>
-    <a href="/visiteur_Auth"></a>
+    <a class="btn btn-primary" href="/visiteur_pe">Deconexion</a>
 @endsection
 @section('content')
 
@@ -21,7 +21,7 @@
                     <h1 >Ajouter Votre Nouvelle Visite Mr:</h1>
                 </div>
                 <div class="col-md-10 col-lg-8 col-xl-7 mx-auto">
-                    <form action="/ajouter_nouvelle_visite/{{$visiteur->id}}" method="POST" onsubmit="return verif();" >
+                    <form action="/Nouvelle_Visite_post/{{$visiteur->id}}" method="POST" onsubmit="return verif();" >
                         {{ csrf_field() }}
                         <div class="form-row">
 
