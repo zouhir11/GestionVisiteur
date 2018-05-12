@@ -21,9 +21,7 @@ class CreateVisiteursTable extends Migration
             $table->string('email', 254)->unique();
             $table->string('tel', 254);
             $table->string('provenance', 254);
-            $table->string('motif', 254);
-            $table->string('nom_service', 254);
-            $table->date('date_visite', 254);
+
 
            // $table->primary('cin');
 

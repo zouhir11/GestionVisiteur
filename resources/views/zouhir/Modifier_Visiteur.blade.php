@@ -1,4 +1,10 @@
 @extends('zouhir.Form_Base')
+@section('menu_visiteur')
+    <a href="Mon_Profil1/{{$visiteur->id}}"><h6>Mon Profil</h6></a>
+    <a href="visit3"><h6>Mes Visites</h6></a>
+    <a href="Nouvelle_Visite/{{$visiteur->id}}"><h6>Nouvelle Visite</h6></a>
+    <a href="visiteur_Auth"></a>
+@endsection
 @section('content')
     <header class="masthead text-white text-center">
         <div class="overlay"></div>
@@ -50,7 +56,7 @@
                             </div>
                             <div class="col-12 col-md-12 mb-2 mb-md-0">
                                 <br>
-                                <button type="submit" class="btn btn-block btn-lg btn-primary">Modifier</button>
+                                <button type="submit" class="btn btn-block btn-lg btn-primary">Modifier</button><
                             </div>
                             <div class="col-12 col-md-3">
                             </div>

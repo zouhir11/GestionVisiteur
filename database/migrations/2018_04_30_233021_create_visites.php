@@ -17,20 +17,24 @@ class CreateVisites extends Migration
 
             $table->increments('id');
 
-            $table->integer('id_visiteurs')->unsigned();
+            $table->string('cin_visiteur');
+            $table->string('nom_service');
+            $table->string('etat_visite')->default('En Cours');
+            $table->string('nom_motif');
+            $table->dateTime('date_visite');
+            $table->dateTime('heure_entrer')->nullable();
+            $table->dateTime('heure_sortie')->nullable();
+
+            $table->integer('id_visiteur')->unsigned();
             $table->integer('id_motif')->unsigned();
 
-            $table->foreign('id_visiteurs')->references('id')->on('visiteurs')
+            $table->foreign('id_visiteur')->references('id')->on('visiteurs')
                 ->onDelete('CASCADE')
                 ->onUpdate('CASCADE');
 
             $table->foreign('id_motif')->references('id')->on('motifs')
                 ->onDelete('CASCADE')
                 ->onUpdate('CASCADE');
-
-            $table->dateTime('date_visite');
-            $table->dateTime('heure_entrer');
-            $table->dateTime('heure_sortie');
 
             $table->timestamps();
         });

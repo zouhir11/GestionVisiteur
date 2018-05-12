@@ -1,8 +1,16 @@
 <h1>
     <?php
-    echo $visiteur ;
+    echo $visite ;
     ?>
 </h1>
-<h1>qbksfdbkbckbdqskbkqcf
+<h1>qbksfdbkbckbdqskbkqcfsdkjqbkbdv
+    sdvnqljSDFV
+    SDFVLKN
+    SDFVLK
+    SQDJSQDFV
+    SDFVKQSFV
+    QSFV
+    QSFVS
+    FV
     sfdjhsdfbksvjdbfk
 </h1>
