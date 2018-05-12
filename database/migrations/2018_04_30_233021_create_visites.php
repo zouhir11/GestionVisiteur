@@ -21,7 +21,7 @@ class CreateVisites extends Migration
             $table->string('nom_service');
             $table->string('etat_visite')->default('En Cours');
             $table->string('nom_motif');
-            $table->dateTime('date_visite');
+            $table->date('date_visite');
             $table->dateTime('heure_entrer')->nullable();
             $table->dateTime('heure_sortie')->nullable();
 

@@ -39,17 +39,61 @@ class Modifier_visiteur extends Controller
             return view('zouhir.Visiteur_Authentification');
     }
 
+
+    /* --------------------------------------------MES VISITES ------------------------------------------------*/
+
+
     public function mes_visites(Request $request)
     {
         $ci=$request->input('Cin');
         $em=$request->input('Email');
-        $visiteur=Visiteur::where([['cin','=',"$ci"],['email','=',"$em"],])->first();
 
-        $cin=$visiteur->cin;
-        $visite=Visite::where('cin_visiteur','=',"$cin");
+        $visiteur=Visiteur::all();
+        $visite=Visite::all();
 
-        return view('zouhir.Mes_Visites',compact('visite'));
+        $tableau_visite=array();
+        $j=0;
+        $i=0;
+        foreach ($visiteur as $Visiteur)
+        {
+            if($Visiteur->cin==$ci && $Visiteur->email==$em)
+            {
+                $i=1;
+                $id=$Visiteur->id;
+                foreach ($visite as $Visite)
+                {
+                    if($Visite->id_visiteur==$id)
+                    {
+                        $tableau_visite[$j]=$Visite;
+                        $j=$j+1;
+                    }
+                }
+                return view('zouhir.Mes_Visites',compact('tableau_visite','id'));
+            }
+        }
+        if ($i==0){echo "email ou cin incorrect";}
+
+
     }
+
+
+    public function mes_visites_get($id)
+    {
+        $tableau_visite=array();
+        $j=0;
+        $visite=Visite::all();
+                foreach ($visite as $Visite)
+                {
+                    if($Visite->id_visiteur==$id)
+                    {
+                        $tableau_visite[$j]=$Visite;
+                        $j=$j+1;
+                    }
+                }
+                return view('zouhir.Mes_Visites',compact('tableau_visite','id'));
+    }
+
+    /* ------------------------------------------FIN MES VISITES --------------------------------------------*/
 
 
     /* ---------------------------------------MODIFIER PROFIL VISITEUR --------------------------------------*/
