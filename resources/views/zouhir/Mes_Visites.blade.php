@@ -7,6 +7,12 @@
     <a class="btn btn-primary" href="/visiteur_pe">Deconexion</a>
 @endsection
 @section('content')
+    <script type="text/javascript">
+        function verif(argument) {
+            return confirm('are you sur....?');
+        }
+    </script>
+
     <header class="masthead text-white text-center">
         <div class="overlay"></div>
                 <div class="col-xl-9 mx-auto">
@@ -39,8 +45,8 @@
                                             <td>{{$vis->nom_service}}</td>
                                             <td>{{$vis->nom_motif}}</td>
                                             <td>{{$vis->date_visite}}</td>
-                                            <td><a href="#">Modifier</a></td>
-                                            <td><a href="#">Annuler</a></td>
+                                            <td><a href="/Modifier_Visite_Get/{{$vis->id}}">Modifier</a></td>
+                                            <td><a href="/Annuler_Visite_Get/{{$vis->id}}" onsubmit="return verif();">Annuler</a></td>
                                         </tr>
                                     @endforeach
                                     </body>

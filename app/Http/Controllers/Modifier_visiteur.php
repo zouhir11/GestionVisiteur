@@ -11,37 +11,50 @@ use App\Motif;
 class Modifier_visiteur extends Controller
 {
 
-    public function autentifier_visiteur(Request $request)
+    /* -----------------------------------------MODIFIER VISITE-----------------------------------------*/
+
+    public function Modifier_Visite_Get($id)
     {
-        $ci=$request->input('Cin');
-        $em=$request->input('Email');
-       $visiteur=Visiteur::where([['cin','=',"$ci"],['email','=',"$em"],])->first();
-       return view('zouhir.Modifier_Visiteur',compact('visiteur'));
+        $visite=Visite::find($id);
+        $service=Service::all();
+        $motif=Motif::all();
+       return view('zouhir.Modifier_Visite',compact('visite','service','motif'));
     }
 
-    public function enregistrer_modification_visiteurs(Request $request)
+    public function Modifier_Visite_Post(Request $request,$id)
     {
         if ($request->isMethod('POST'))
         {
-            $ci = $request->input('Cin');
-            $visiteur = Visiteur::where('cin', "$ci")->first();
-            $visiteur->cin = $request->input('Cin');
-            $visiteur->nom = $request->input('Nom');
-            $visiteur->prenom = $request->input('Prenom');
-            $visiteur->email = $request->input('Email');
-            $visiteur->tel = $request->input('Tel');
-            $visiteur->provenance = $request->input('Provenance');
-            $visiteur->motif = $request->input('Motif');
-            $visiteur->nom_service = $request->input('Service');
-            $visiteur->date_visite = $request->input('DateVisite');
-            $visiteur->save();
+            $visite=Visite::find($id);
+            $visite->nom_service = $request->input('Service');
+            $visite->nom_motif = $request->input('Motif');
+            $visite->date_visite = $request->input('DateVisite');
+            $visite->save();
+            /*$service=Service::all();
+            $motif=Motif::all();
+            return view('zouhir.Modifier_Visite',compact('visite','service','motif'));*/
+
+            $tableau_visite=array();
+            $j=0;
+            $visite=Visite::all();
+            foreach ($visite as $Visite)
+            {
+                if($Visite->id_visiteur==$id && $Visite->etat_visite=="En Cours")
+                {
+                    $tableau_visite[$j]=$Visite;
+                    $j=$j+1;
+                }
+            }
+            return view('zouhir.Mes_Visites',compact('tableau_visite','id'));
         }
-            return view('zouhir.Visiteur_Authentification');
+
     }
+
+    /* -----------------------------------------FIN MODIFIER VISITE -----------------------------------------*/
+
 
 
     /* --------------------------------------------MES VISITES ------------------------------------------------*/
-
 
     public function mes_visites(Request $request)
     {
@@ -135,19 +148,21 @@ class Modifier_visiteur extends Controller
         return view('zouhir.Nouvelle_Visite',compact('visiteur','service','motif'));
     }
 
-    public function Nouvelle_Visite_post($id)
+   /* public function Nouvelle_Visite_post($id)
     {
         $service=Service::all();
         $motif=Motif::all();
 
         $visiteur=Visiteur::find($id);
         return view('zouhir.Nouvelle_Visite',compact('visiteur','service','motif'));
-    }
+    }*/
 
-    public function ajouter_nouvelle_visite(Request $request,$id)
+    public function Nouvelle_Visite_post(Request $request,$id)
     {
             if ($request->isMethod('POST'))
             {
+                $service=Service::all();
+                $motif=Motif::all();
 
             $nom_srvice=$request->input('Service');
             $nom_motif=$request->input('Motif');
@@ -156,7 +171,7 @@ class Modifier_visiteur extends Controller
 
             $visiteur=Visiteur::find($id);
             //$service=Service::where('nom_service','=',"$nom_srvice");
-            $motif=Motif::where('motif','=',"$nom_motif")->first();
+            $motif2=Motif::where('motif','=',"$nom_motif")->first();
 
             $visite=new Visite();
 
@@ -165,15 +180,45 @@ class Modifier_visiteur extends Controller
             $visite->nom_motif = $nom_motif;
             $visite->date_visite = $date;
             $visite->id_visiteur = $visiteur->id;
-            $visite->id_motif =$motif->id;
+            $visite->id_motif =$motif2->id;
 
             $visite->save();
 
-            return view('zouhir.t');
+            return view('zouhir.Nouvelle_Visite',compact('visiteur','service','motif'));
        }
     }
 
     /* -------------------------------------FIN AJOUTER NOVELLE VISITE--------------------------------------------*/
+
+
+
+    /*------------------------------------------ANNULER VISITE-------------------------------------------------*/
+
+      public function Annuler_Visite_Get($id)
+      {
+
+          $visite=Visite::find($id);
+          $id=$visite->id_visiteur;
+          $visite->delete();
+
+
+          //redirect('/mes_visites_get/{i}');
+
+          $tableau_visite=array();
+          $j=0;
+          $visite=Visite::all();
+          foreach ($visite as $Visite)
+          {
+              if($Visite->id_visiteur==$id && $Visite->etat_visite=="En Cours")
+              {
+                  $tableau_visite[$j]=$Visite;
+                  $j=$j+1;
+              }
+          }
+          return view('zouhir.Mes_Visites',compact('tableau_visite','id'));
+      }
+
+    /*-------------------------------------------FIN ANNULER VISITE---------------------------------------------*/
 
 
 }

@@ -79,7 +79,7 @@ Route::POST('/Modifier_Profil','Modifier_visiteur@Modifier_Profil');
 
 Route::get('/Nouvelle_Visite/{id}','Modifier_visiteur@Nouvelle_Visite');
 Route::post('/Nouvelle_Visite_post/{id}','Modifier_visiteur@Nouvelle_Visite_post');
-Route::Post('/ajouter_nouvelle_visite/{id}','Modifier_visiteur@ajouter_nouvelle_visite');
+//Route::Post('/ajouter_nouvelle_visite/{id}','Modifier_visiteur@ajouter_nouvelle_visite');
 
 /* -----------------------------------FIN AJOUTER NOVELLE VISITE------------------------------------------*/
 
@@ -91,6 +91,23 @@ Route::POST('/mes_visites','Modifier_visiteur@mes_visites');
 Route::get('/mes_visites_get/{id}','Modifier_visiteur@mes_visites_get');
 
 /*-------------------------------------------FIN MES VISITES------------------------------------------------*/
+
+
+
+/*------------------------------------------MODIFIER VISITE-------------------------------------------------*/
+
+Route::get('/Modifier_Visite_Get/{id}','Modifier_visiteur@Modifier_Visite_Get');
+Route::POST('/Modifier_Visite_Post/{id}','Modifier_visiteur@Modifier_Visite_Post');
+
+/*-------------------------------------------FIN MODIFIER VISITE---------------------------------------------*/
+
+
+
+/*------------------------------------------ANNULER VISITE-------------------------------------------------*/
+
+Route::get('/Annuler_Visite_Get/{id}','Modifier_visiteur@Annuler_Visite_Get');
+
+/*-------------------------------------------FIN ANNULER VISITE---------------------------------------------*/
 
 /*-------------------------------------------FIN ROUTE ZOUHIR----------------------------------------------*/
 
