@@ -13,7 +13,7 @@ class Insert_PreE extends Controller
     {
         $service=Service::all();
         $motif=Motif::all();
-        return view('zouhir.Visiteur_Pré_Enregistrement',compact('service','motif'));
+        return view('zouhir_visiteur.Visiteur_Pré_Enregistrement',compact('service','motif'));
     }
 
     public function insert_visiteur_visite(Request $request)
@@ -52,6 +52,6 @@ class Insert_PreE extends Controller
    /* function get_motif()
     {
         $motif=Motif::all();
-        return view('zouhir.Visiteur_Pré_Enregistrement',compact('motif'));
+        return view('zouhir_visiteur.Visiteur_Pré_Enregistrement',compact('motif'));
     }*/
 }

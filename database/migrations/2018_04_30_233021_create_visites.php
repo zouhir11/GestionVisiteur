@@ -21,9 +21,10 @@ class CreateVisites extends Migration
             $table->string('nom_service');
             $table->string('etat_visite')->default('En Cours');
             $table->string('nom_motif');
+            $table->string('employe')->nullable();
             $table->date('date_visite');
-            $table->dateTime('heure_entrer')->nullable();
-            $table->dateTime('heure_sortie')->nullable();
+            $table->time('heure_entree')->nullable();
+            $table->time('heure_sortie')->nullable();
 
             $table->integer('id_visiteur')->unsigned();
             $table->integer('id_motif')->unsigned();

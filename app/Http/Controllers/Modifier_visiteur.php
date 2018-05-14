@@ -7,7 +7,7 @@ use App\Visiteur;
 use App\Service;
 use App\Visite;
 use App\Motif;
-
+use App\Http\Requests\authrequest;
 class Modifier_visiteur extends Controller
 {
 
@@ -18,7 +18,7 @@ class Modifier_visiteur extends Controller
         $visite=Visite::find($id);
         $service=Service::all();
         $motif=Motif::all();
-       return view('zouhir.Modifier_Visite',compact('visite','service','motif'));
+       return view('zouhir_visiteur.Modifier_Visite',compact('visite','service','motif'));
     }
 
     public function Modifier_Visite_Post(Request $request,$id)
@@ -26,13 +26,14 @@ class Modifier_visiteur extends Controller
         if ($request->isMethod('POST'))
         {
             $visite=Visite::find($id);
+            $id=$visite->id_visiteur;
             $visite->nom_service = $request->input('Service');
             $visite->nom_motif = $request->input('Motif');
             $visite->date_visite = $request->input('DateVisite');
             $visite->save();
-            /*$service=Service::all();
-            $motif=Motif::all();
-            return view('zouhir.Modifier_Visite',compact('visite','service','motif'));*/
+
+            session()->flash('modifier_visite',"-------------------------LA VISITE NUMERO :  {$visite->id}  EST MODIFIER-----------------------");
+
 
             $tableau_visite=array();
             $j=0;
@@ -45,7 +46,8 @@ class Modifier_visiteur extends Controller
                     $j=$j+1;
                 }
             }
-            return view('zouhir.Mes_Visites',compact('tableau_visite','id'));
+
+            return view('zouhir_visiteur.Mes_Visites',compact('tableau_visite','id'));
         }
 
     }
@@ -56,7 +58,7 @@ class Modifier_visiteur extends Controller
 
     /* --------------------------------------------MES VISITES ------------------------------------------------*/
 
-    public function mes_visites(Request $request)
+    public function mes_visites(authrequest $request)
     {
         $ci=$request->input('Cin');
         $em=$request->input('Email');
@@ -66,27 +68,35 @@ class Modifier_visiteur extends Controller
 
         $tableau_visite=array();
         $j=0;
-        $i=0;
-        foreach ($visiteur as $Visiteur)
+
+        /*foreach ($visiteur as $Visiteur)
         {
-            if($Visiteur->cin==$ci && $Visiteur->email==$em)
+            if($Visiteur->cin=$ci && $Visiteur->email!=$em)
             {
-                $i=1;
-                $id=$Visiteur->id;
-                foreach ($visite as $Visite)
-                {
-                    if($Visite->id_visiteur==$id && $Visite->etat_visite=="En Cours")
-                    {
-                        $tableau_visite[$j]=$Visite;
-                        $j=$j+1;
-                    }
-                }
-                return view('zouhir.Mes_Visites',compact('tableau_visite','id'));
+               $i=$i+1;
             }
         }
-        if ($i==0){echo "email ou cin incorrect";}
+      */
 
+            foreach ($visiteur as $Visiteur) {
+                if ($Visiteur->cin == $ci && $Visiteur->email == $em)
+                {
+                    $id = $Visiteur->id;
+                    foreach ($visite as $Visite) {
+                        if ($Visite->id_visiteur == $id && $Visite->etat_visite == "En Cours") {
+                            $tableau_visite[$j] = $Visite;
+                            $j = $j + 1;
+                        }
+                    }
+                    return view('zouhir_visiteur.Mes_Visites', compact('tableau_visite', 'id'));
+                }
+            }
 
+        if ($j==0)
+        {
+            return redirect('/visiteur_Auth');
+            session()->flash('authentification','------------------------EMAIL OU CIN INCORRECT--------------------');
+        }
     }
 
     public function mes_visites_get($id)
@@ -102,7 +112,7 @@ class Modifier_visiteur extends Controller
                         $j=$j+1;
                     }
                 }
-                return view('zouhir.Mes_Visites',compact('tableau_visite','id'));
+                return view('zouhir_visiteur.Mes_Visites',compact('tableau_visite','id'));
     }
 
     /* ------------------------------------------FIN MES VISITES --------------------------------------------*/
@@ -113,7 +123,7 @@ class Modifier_visiteur extends Controller
     public function Mon_Profil($id)
     {
         $visiteur=Visiteur::find($id);
-        return view('zouhir.Mon_Profil',compact('visiteur'));
+        return view('zouhir_visiteur.Mon_Profil',compact('visiteur'));
     }
 
     public function Modifier_Profil(Request $request)
@@ -130,7 +140,8 @@ class Modifier_visiteur extends Controller
             $visiteur->tel = $request->input('Tel');
             $visiteur->provenance = $request->input('Provenance');
             $visiteur->save();
-            return view('zouhir.Mon_Profil',compact('visiteur'));
+            session()->flash('modifier_profil','-------------------------VOTRE PROFIL EST MODIFIER-----------------------');
+            return view('zouhir_visiteur.Mon_Profil',compact('visiteur'));
         }
     }
 
@@ -145,7 +156,7 @@ class Modifier_visiteur extends Controller
         $motif=Motif::all();
         //$cin=$request->input('Cin');
         $visiteur=Visiteur::find($id);
-        return view('zouhir.Nouvelle_Visite',compact('visiteur','service','motif'));
+        return view('zouhir_visiteur.Nouvelle_Visite',compact('visiteur','service','motif'));
     }
 
    /* public function Nouvelle_Visite_post($id)
@@ -154,7 +165,7 @@ class Modifier_visiteur extends Controller
         $motif=Motif::all();
 
         $visiteur=Visiteur::find($id);
-        return view('zouhir.Nouvelle_Visite',compact('visiteur','service','motif'));
+        return view('zouhir_visiteur.Nouvelle_Visite',compact('visiteur','service','motif'));
     }*/
 
     public function Nouvelle_Visite_post(Request $request,$id)
@@ -184,7 +195,9 @@ class Modifier_visiteur extends Controller
 
             $visite->save();
 
-            return view('zouhir.Nouvelle_Visite',compact('visiteur','service','motif'));
+            session()->flash('success',"------------------------LA VISITE NUMERO:  {$visite->id}  EST AJOUTER--------------------");
+
+            return view('zouhir_visiteur.Nouvelle_Visite',compact('visiteur','service','motif'));
        }
     }
 
@@ -198,9 +211,11 @@ class Modifier_visiteur extends Controller
       {
 
           $visite=Visite::find($id);
+          $k=$id;
           $id=$visite->id_visiteur;
           $visite->delete();
 
+          session()->flash('delete',"------------------------LA VISITE NUMERO:  {$k}  EST ANNULER--------------------");
 
           //redirect('/mes_visites_get/{i}');
 
@@ -215,7 +230,7 @@ class Modifier_visiteur extends Controller
                   $j=$j+1;
               }
           }
-          return view('zouhir.Mes_Visites',compact('tableau_visite','id'));
+          return view('zouhir_visiteur.Mes_Visites',compact('tableau_visite','id'));
       }
 
     /*-------------------------------------------FIN ANNULER VISITE---------------------------------------------*/

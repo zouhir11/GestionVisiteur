@@ -1,4 +1,4 @@
-@extends('zouhir.Form_Base')
+@extends('zouhir_visiteur.Form_Base')
 @section('menu_visiteur')
     <a href="/Mon_Profil/{{$visiteur->id}}"><h6>Mon Profil</h6></a>
     <a href="/mes_visites_get/{{$visiteur->id}}"><h6>Mes Visites</h6></a>
@@ -19,6 +19,15 @@
             <div class="row">
                 <div class="col-xl-9 mx-auto">
                     <h1 >Modifier Profil</h1>
+
+
+                    @if(session()->has('modifier_profil'))
+                        <div class="alert alert-success ">
+                            {{ session()->get('modifier_profil') }}
+                        </div>
+                    @endif
+
+
                 </div>
                 <div class="col-md-10 col-lg-8 col-xl-7 mx-auto">
                     <form action="/Modifier_Profil" method="POST" onsubmit="return verif();">

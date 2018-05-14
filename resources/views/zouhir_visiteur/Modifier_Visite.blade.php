@@ -1,4 +1,4 @@
-@extends('zouhir.Form_Base')
+@extends('zouhir_visiteur.Form_Base')
 @section('menu_visiteur')
     <a href="/Mon_Profil/{{$visite->id_visiteur}}"><h6>Mon Profil</h6></a>
     <a href="/mes_visites_get/{{$visite->id_visiteur}}"><h6>Mes Visites</h6></a>

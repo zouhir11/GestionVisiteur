@@ -36,11 +36,7 @@ route::get('/insert9','insertion@test9');
 /* -----------------------------------------test d'insertion avec des methodes --------------------------*/
 
 Route::get('/visiteur_pe', function () {
-    return view('zouhir.Visiteur_Pré_Enregistrement');
-});
-
-Route::get('/visiteur_Auth', function () {
-    return view('zouhir.Visiteur_Authentification');
+    return view('zouhir_visiteur.Visiteur_Pré_Enregistrement');
 });
 
 /* ---------------------------------------Fin test d'insertion avec des methodes --------------------------*/
@@ -59,6 +55,9 @@ route::POST('/insert_visiteur_visite','Insert_PreE@insert_visiteur_visite');
 /* ---------------------------------------AUTHENTIFICATION VISITEUR --------------------------------------*/
 
 Route::POST('/autentifier_visiteur','Modifier_visiteur@autentifier_visiteur');
+Route::get('/visiteur_Auth', function () {
+    return view('zouhir_visiteur.Visiteur_Authentification');
+});
 
 /* -----------------------------------FIN AUTHENTIFICATION VISITEUR---------------------------------------*/
 
@@ -108,6 +107,42 @@ Route::POST('/Modifier_Visite_Post/{id}','Modifier_visiteur@Modifier_Visite_Post
 Route::get('/Annuler_Visite_Get/{id}','Modifier_visiteur@Annuler_Visite_Get');
 
 /*-------------------------------------------FIN ANNULER VISITE---------------------------------------------*/
+
+/*----------------------------------------------------------------------------------------------------------*/
+/*-------------------------------------------FIN ROUTE VISITEUR---------------------------------------------*/
+/*----------------------------------------------------------------------------------------------------------*/
+
+
+
+
+
+
+
+
+
+
+/*----------------------------------------------------------------------------------------------------------*/
+/*-----------------------------------------------ROUTE AGENT------------------------------------------------*/
+/*----------------------------------------------------------------------------------------------------------*/
+Route::get('/agent', function () {
+    return view('zouhir_agent.Liste_Pre_Enregistrement');
+});
+
+route::get('/agent1','Agent_controller@liste_pre_enregistrement');
+
+
+route::get('/afficher_visiteur/{id}','Agent_controller@afficher_visiteur');
+route::get('/afficher_visite/{id}','Agent_controller@afficher_visite');
+
+
+
+route::POST('/confirmer_visite/{id}','Agent_controller@confirmer_visite');
+
+/*----------------------------------------------------------------------------------------------------------*/
+/*-------------------------------------------FIN ROUTE AGENT---------------------------------------------*/
+/*----------------------------------------------------------------------------------------------------------*/
+
+
 
 /*-------------------------------------------FIN ROUTE ZOUHIR----------------------------------------------*/
 

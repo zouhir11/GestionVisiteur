@@ -1,5 +1,5 @@
 
-@extends('zouhir.Form_Base')
+@extends('zouhir_visiteur.Form_Base')
 @section('menu_visiteur')
     <a href="/Mon_Profil/{{$id}}"><h6>Mon Profil</h6></a>
     <a href="/mes_visites_get/{{$id}}"><h6>Mes Visites</h6></a>
@@ -7,6 +7,9 @@
     <a class="btn btn-primary" href="/visiteur_pe">Deconexion</a>
 @endsection
 @section('content')
+
+
+
     <script type="text/javascript">
         function verif(argument) {
             return confirm('are you sur....?');
@@ -15,9 +18,25 @@
 
     <header class="masthead text-white text-center">
         <div class="overlay"></div>
+
+
+
                 <div class="col-xl-9 mx-auto">
                     <br>
                     <h1 >Visites En Cours</h1>
+
+                    @if(session()->has('delete'))
+                        <div class="alert alert-success glyphicon-text-size">
+                            {{ session()->get('delete') }}
+                        </div>
+                    @endif
+
+                    @if(session()->has('modifier_visite'))
+                        <div class="alert alert-success glyphicon-text-size">
+                            {{ session()->get('modifier_visite') }}
+                        </div>
+                    @endif
+
                     <br>
                 </div>
 
