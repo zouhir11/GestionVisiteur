@@ -52,6 +52,7 @@ class Agent_controller extends Controller
     public function afficher_visite($id)
     {
         $visite=Visite::find($id);
+        $droit_accee=Droitacce::all();
         $nom_service=$visite->nom_service;
         $service=Service::where('nom_service','=',"$nom_service")->first();
         $id_service=$service->id;
@@ -70,7 +71,7 @@ class Agent_controller extends Controller
             }
         }
 
-        return view('zouhir_agent.Afficher_Visite',compact('visite','liste_personnel'));
+        return view('zouhir_agent.Afficher_Visite',compact('visite','liste_personnel','droit_accee'));
     }
 
 

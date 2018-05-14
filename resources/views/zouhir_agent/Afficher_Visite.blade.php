@@ -6,11 +6,13 @@
     <a class="btn btn-primary" href="/visiteur_pe">Deconexion</a>
 @endsection
 @section('content1')
+
     <script type="text/javascript">
         function verif(argument) {
-            return confirm('are you sur....?');
+            return alert('are you sur....?');
         }
     </script>
+
 
     <header class="masthead text-white text-center">
         <div class="overlay"></div>
@@ -53,12 +55,12 @@
                             <br>
                             <label for="Heure_Entree"> Heure Entree:</label>
                             <div class="col-12 col-md-12 mb-2 mb-md-0">
-                                <input type="datetime-local" name="Heure_Entree" value="{{$visite->heure_entree}}" class="form-control form-control-lg" >
+                                <input type="time" name="Heure_Entree" value="{{$visite->heure_entree}}" class="form-control form-control-lg" >
                             </div>
                             <br>
                             <label for="Heure_Sortie">Heure Sortie:</label>
                             <div class="col-12 col-md-12 mb-2 mb-md-0">
-                                <input type="datetime-local" name="Heure_Sortie" value="{{$visite->heure_sortie}}" class="form-control form-control-lg" >
+                                <input type="time" name="Heure_Sortie" value="{{$visite->heure_sortie}}" class="form-control form-control-lg" >
                             </div>
                             <div class="col-12 col-md-12 mb-2 mb-md-0">
                                 <br>
@@ -67,12 +69,22 @@
                                     <option>Terminé</option><option>Annulée</option>
                                 </select>
                             </div>
+                            <br>
+                            <label for="Droit_Accee"> Les Droits D'accée:</label>
+                            <div class="col-12 col-md-12 mb-2 mb-md-0">
+                                <table class="form-control form-control-lg"  >
+                                   <!-- <tr><h5>Les Droits D'accée</h5></tr>-->
+                                    @foreach($droit_accee as $droit)
+                             <tr><td><input name="Droit_Accee" type="checkbox" class="checkbox " ></td><td>**{{$droit->libelle}}**</td></tr>
+                                    @endforeach
+                                </table>
+                            </div>
 
 
 
                             <div class="col-12 col-md-12 mb-2 mb-md-0">
                                 <br>
-                                <button type="submit" class="btn btn-block btn-lg btn-primary">Confirmer</button>
+                                <button type="submit" class="btn btn-block btn-lg btn-primary" >Confirmer</button>
                             </div>
                             <div class="col-12 col-md-3">
                             </div>
