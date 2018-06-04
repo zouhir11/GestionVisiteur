@@ -1,4 +1,4 @@
-@extends('zouhir_agent.page_master_agent')
+@extends('zouhir_agent.page_master_agent2')
 @section('menu_visiteur')
     <a href="/Mon_Profil"><h6>Mon Profil</h6></a>
     <a href="/mes_visites_get"><h6>Mes Visites</h6></a>
@@ -7,42 +7,60 @@
 @endsection
 @section('content1')
 
+
+
+
     <script type="text/javascript">
         function verif(argument) {
-            return alert('are you sur....?');
+            return alert('ETES VOUS SUR ?');
         }
     </script>
 
+    <style type="text/css">
+        .rr {
+            margin-left: 22%;
+        }
+        .r2 {
+            margin-left: 38%;
+        }
+    </style>
 
-    <header class="masthead text-white text-center">
+    <table class="r2"><tr><td></td><td>
+        <h2><b>Modifier Visite</b></h2>
+    </td></tr></table>
+<div class="rr">
+   <header class="masthead text-white text-center">
+
         <div class="overlay"></div>
         <div class="container">
             <div class="row">
-                <div class="col-xl-9 mx-auto">
-                    <h1 >Modifier Visite</h1>
 
-                </div>
-                <div class="col-md-10 col-lg-8 col-xl-7 mx-auto">
-                    <form action="/confirmer_visite/{{$visite->id}}" method="POST" onsubmit="return verif();" >
+
+               <div class="col-md-10 col-lg-8 col-xl-7 mx-auto">
+
+
+                     <form action="/confirmer_visite/{{$visite->id}}" method="POST" onsubmit="return verif();" >
                         {{ csrf_field() }}
-                        <div class="form-row">
+                         <center>  <div class="form-row">
 
 
-                            <div class="col-12 col-md-12 mb-2 mb-md-0">
+
+
+                            <div class="col-12 col-md-8 mb-2 mb-md-0">
                                 <br>
                                 <input type="text" name="Service" value="{{$visite->nom_service}}" class="form-control form-control-lg" >
                             </div>
-                            <div class="col-12 col-md-12 mb-2 mb-md-0">
+                            <div class="col-12 col-md-8 mb-2 mb-md-0">
                                 <br>
                                 <input type="text" name="Motif"  value="{{$visite->nom_motif}}" class="form-control form-control-lg" >
                             </div>
-                            <div class="col-12 col-md-12 mb-2 mb-md-0">
+                            <div class="col-12 col-md-8 mb-2 mb-md-0">
                                 <br>
                                 <input type="date" value="{{$visite->date_visite}}" name="Date_Visite" class="form-control form-control-lg">
                             </div>
 
 
-                            <div class="col-12 col-md-12 mb-2 mb-md-0">
+                            <div class="col-12 col-md-8 mb-2 mb-md-0">
                                 <br>
                                 <select name="Employe" class="form-control form-control-lg" >
 
@@ -52,46 +70,73 @@
                                     @endforeach
                                 </select>
                             </div>
-                            <br>
-                            <label for="Heure_Entree"> Heure Entree:</label>
-                            <div class="col-12 col-md-12 mb-2 mb-md-0">
-                                <input type="time" name="Heure_Entree" value="{{$visite->heure_entree}}" class="form-control form-control-lg" >
-                            </div>
-                            <br>
-                            <label for="Heure_Sortie">Heure Sortie:</label>
-                            <div class="col-12 col-md-12 mb-2 mb-md-0">
-                                <input type="time" name="Heure_Sortie" value="{{$visite->heure_sortie}}" class="form-control form-control-lg" >
-                            </div>
-                            <div class="col-12 col-md-12 mb-2 mb-md-0">
+
+                            <div class="col-12 col-md-8 mb-2 mb-md-0">
                                 <br>
+                                <label for="Etat_Visite"> Etat Visite:</label>
                                 <select type="text" name="Etat_Visite"  class="form-control form-control-lg" >
                                     <option>{{$visite->etat_visite}}</option>  <option>Traitée</option>
                                     <option>Terminé</option><option>Annulée</option>
                                 </select>
                             </div>
-                            <br>
-                            <label for="Droit_Accee"> Les Droits D'accée:</label>
-                            <div class="col-12 col-md-12 mb-2 mb-md-0">
-                                <table class="form-control form-control-lg"  >
-                                   <!-- <tr><h5>Les Droits D'accée</h5></tr>-->
-                                    @foreach($droit_accee as $droit)
-                             <tr><td><input name="Droit_Accee" type="checkbox" class="checkbox " ></td><td>**{{$droit->libelle}}**</td></tr>
-                                    @endforeach
-                                </table>
+
+
+                            <div class="col-12 col-md-8 mb-2 mb-md-0">
+                                <br>
+                                <label for="Heure_Entree"> Heure Entree:</label>
+                                <input type="time" name="Heure_Entree" value="{{$visite->heure_entree}}" class="form-control form-control-lg" >
+                            </div>
+
+                            <div class="form-group col-12 col-md-8 mb-2 mb-md-0">
+                                <br>
+                                <label for="Heure_Sortie">Heure Sortie:</label>
+                                <input type="time" name="Heure_Sortie" value="{{$visite->heure_sortie}}" class="form-control form-control-lg" >
                             </div>
 
 
 
-                            <div class="col-12 col-md-12 mb-2 mb-md-0">
+
+                         <div class="col-12 col-md-8 mb-2 mb-md-0">
+                                <br>
+                                <!--<label for="Droit_Accee"> Les Droits D'accée:</label>-->
+                                    <div class="multiselect">
+                                        <div class="selectBox" onclick="showCheckboxes()">
+                                            <select >
+                                                <option>Sélectionner Droits D'accée:</option>
+                                            </select>
+                                            <div class="overSelect "></div>
+                                        </div>
+                                        <div id="checkboxes">
+
+                                            @foreach($droit_accee as $droit)
+                                                <label for="ss">
+                                                <input  type="checkbox"  > :{{$droit->libelle}}</label>
+                                            @endforeach
+
+                                        </div>
+                                    </div>
+                         </div>
+
+
+
+
+
+
+                            <div class="col-12 col-md-8 mb-2 mb-md-0">
                                 <br>
                                 <button type="submit" class="btn btn-block btn-lg btn-primary" >Confirmer</button>
                             </div>
                             <div class="col-12 col-md-3">
                             </div>
-                        </div>
+
+
+                        </div></center>
                     </form>
+
                 </div>
             </div>
         </div>
+
     </header>
+</div>
 @endsection

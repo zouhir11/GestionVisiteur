@@ -14,6 +14,19 @@ use Illuminate\Http\Request;
 
 class Agent_controller extends Controller
 {
+public function liste_employe()
+    {
+        $liste_employe=Personnel::all();
+        return view('zouhir_agent.liste_employe',compact('liste_employe'));
+
+    }
+
+    public function liste_service()
+    {
+        $liste_service=Service::all();
+        return view('zouhir_agent.liste_service',compact('liste_service'));
+
+    }
 
 
 
@@ -93,5 +106,18 @@ class Agent_controller extends Controller
         session()->flash('confirmer','-------------------------LA VISITE EST CONFIRME-----------------------');
         return redirect('/agent1');
     }
+
+
+
+
+
+    public function chercher_visiteur(Request $request)
+    {
+        $nom_visiteur=$request->button('nom_visiteur_chercher');
+        $visiteur=Visiteur::where('nom','=',"$nom_visiteur")->first();
+
+        return view('zouhir_agent.Visiteur_Chercher',compact('visiteur'));
+    }
+
 
 }

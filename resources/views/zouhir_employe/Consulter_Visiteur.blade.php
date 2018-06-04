@@ -1,5 +1,5 @@
 
-@extends('zouhir_agent.page_master_agent')
+@extends('zouhir_employe.Page_Master_Employe2')
 @section('menu_visiteur')
     <a href="/Mon_Profil"><h6>Mon Profil</h6></a>
     <a href="/mes_visites_get"><h6>Mes Visites</h6></a>
@@ -13,7 +13,7 @@
         <div class="col-xl-9 mx-auto">
             <br>
 
-            <h1 >Liste Des Visites </h1>
+            <h1 ><b>Liste Des Visites </b></h1>
             @if(session()->has('confirmer'))
                 <div class="alert alert-success">
                     {{ session()->get('confirmer') }}
@@ -23,20 +23,20 @@
         </div>
         <div class="container">
             <div class="row">
-                <div class="col-md-12">
+                <div class="col-md-11">
                     <!-- <div class="col-xl-9 mx-auto">
                          <center><h1>Mes Visites</h1></center>
                      </div>-->
-                    <table class="table">
+                    <center> <div class="box box-primary"> <table class="table table-responsive datatables">
                         <thead>
                         <tr>
-                            <th>Nom Visiteur</th>
-                            <th>Prenom Visiteur</th>
-                            <th>Provenance Visiteur</th>
-                            <th>Tel Visiteur</th>
-                            <th>Motif</th>
-                            <th>Date Visite</th>
-                            <th>Etat Visite</th>
+                            <th><h4><b>Nom Visiteur</b></h4></th>
+                            <th><h4><b>Prenom Visiteur</b></h4></th>
+                            <th><h4><b>Provenance Visiteur</b></h4></th>
+                            <th><h4><b>Tel Visiteur</b></h4></th>
+                            <th><h4><b>Motif</b></h4></th>
+                            <th><h4><b>Date Visite</b></h4></th>
+                            <th><h4><b>Etat Visite</b></h4></th>
                         </tr>
                         </thead>
 
@@ -45,19 +45,21 @@
                         @foreach($visite as $Visite)
                             <?php if($Visiteur->id==$Visite->id_visiteur && $Visite->nom_service==$nom_service) { ?>
                             <tr>
-                                <td>{{$Visiteur->nom}}</td>
-                                <td>{{$Visiteur->prenom}}</td>
-                                <td>{{$Visiteur->provenance}}</td>
-                                <td>{{$Visiteur->tel}}</td>
-                                <td>{{$Visite->nom_motif}}</td>
-                                <td>{{$Visite->date_visite}}</td>
-                                <td>{{$Visite->etat_visite}}</td>
+                                <td><h5><b>{{$Visiteur->nom}}</b></h5></td>
+                                <td><h5><b>{{$Visiteur->prenom}}</b></h5></td>
+                                <td><h5><b>{{$Visiteur->provenance}}</b></h5></td>
+                                <td><h5><b>{{$Visiteur->tel}}</b></h5></td>
+                                <td><h5><b>{{$Visite->nom_motif}}</b></h5></td>
+                                <td><h5><b>{{$Visite->date_visite}}</b></h5></td>
+                                <td><h5><b>{{$Visite->etat_visite}}</b></h5></td>
                             </tr>
                               <?php  }  ?>
                         @endforeach
                         @endforeach
                         </body>
                     </table>
+                        </div>
+                    </center>
 
                 </div>
             </div>

@@ -9,7 +9,7 @@
 
     <script type="text/javascript">
         function verif(argument) {
-            return confirm('are you sur....?');
+            return confirm('ETES VOUS SUR ?');
         }
     </script>
 
@@ -19,7 +19,7 @@
             <div class="row">
 
                 <div class="col-xl-9 mx-auto">
-                    <h1 >Ajouter Votre Nouvelle Visite Mr:</h1>
+                    <h1 >Ajouter Votre Nouvelle Visite :</h1>
                     @if(session()->has('success'))
                         <div class="alert alert-success">
                             {{ session()->get('success') }}

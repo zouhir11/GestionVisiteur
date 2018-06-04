@@ -128,6 +128,13 @@ Route::get('/agent', function () {
     return view('zouhir_agent.Liste_Pre_Enregistrement');
 });
 
+Route::get('/ag', function () {
+    return view('zouhir_agent.page_master_agent2');
+});
+Route::get('/tes', function () {
+    return view('zouhir_agent.test1');
+});
+
 route::get('/agent1','Agent_controller@liste_pre_enregistrement');
 
 
@@ -138,10 +145,24 @@ route::get('/afficher_visite/{id}','Agent_controller@afficher_visite');
 
 route::POST('/confirmer_visite/{id}','Agent_controller@confirmer_visite');
 
+route::POST('/chercher_visiteur','Agent_controller@chercher_visiteur');
+
+
+route::get('/liste_employe','Agent_controller@liste_employe');
+
+route::get('/liste_service','Agent_controller@liste_service');
+
+/*----------------------------------------------EMPLOYE---------------------------------------------------*/
 
 
 
 route::get('/employe/{id}','employe_controller@employe');
+
+
+
+
+
+
 /*----------------------------------------------------------------------------------------------------------*/
 /*-------------------------------------------FIN ROUTE AGENT---------------------------------------------*/
 /*----------------------------------------------------------------------------------------------------------*/

@@ -8,7 +8,7 @@
 @section('content')
     <script type="text/javascript">
         function verif(argument) {
-            return confirm('are you sur....?');
+            return confirm('ETES VOUS SUR ?');
         }
     </script>
 

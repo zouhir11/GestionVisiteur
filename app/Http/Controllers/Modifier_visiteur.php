@@ -111,6 +111,10 @@ class Modifier_visiteur extends Controller
                         $tableau_visite[$j]=$Visite;
                         $j=$j+1;
                     }
+
+
+
+
                 }
                 return view('zouhir_visiteur.Mes_Visites',compact('tableau_visite','id'));
     }
@@ -195,7 +199,7 @@ class Modifier_visiteur extends Controller
 
             $visite->save();
 
-            session()->flash('success',"------------------------LA VISITE NUMERO:  {$visite->id}  EST AJOUTER--------------------");
+            session()->flash('success',"------------------------VOTRE NOUVELLE VISITE A ETE BIEN AJOUTEE--------------------");
 
             return view('zouhir_visiteur.Nouvelle_Visite',compact('visiteur','service','motif'));
        }
