@@ -329,7 +329,7 @@ desired effect
             <ul class="sidebar-menu" data-widget="tree">
                 <li class="header">HEADER</li>
                 <!-- Optionally, you can add icons to the links -->
-                <li class="active"><a href="#"> <!--<i class="fa fa-link"></i>--> <span>Liste Visiteur</span></a></li>
+                <li class="active"><a href="#"> <!--<i class="fa fa-link"></i>--> <span>Liste des Visites</span></a></li>
                 <li><a href="#"><!--<i class="fa fa-link"></i>-->  <span>Liste Employe</span></a></li>
                 <li class="treeview">
                     <a href="#"><!--<i class="fa fa-link"></i>-->  <span>Liste Service</span>

@@ -51,7 +51,36 @@
                                 <td><h5><b>{{$Visiteur->tel}}</b></h5></td>
                                 <td><h5><b>{{$Visite->nom_motif}}</b></h5></td>
                                 <td><h5><b>{{$Visite->date_visite}}</b></h5></td>
-                                <td><h5><b>{{$Visite->etat_visite}}</b></h5></td>
+
+                                <?php
+                                if($Visite->etat_visite=="Traitée")
+                                { ?>
+
+                                <td><h5><b class="label label-success col-md-8 btn">{{$Visite->etat_visite}}</b></h5></td>
+                                <?php }
+
+                                elseif ($Visite->etat_visite=="En Cours")
+                                { ?>
+                                <td><h5><b class="label label-primary col-md-8 btn">{{$Visite->etat_visite}}</b></h5></td>
+                                <?php   }
+
+
+                                elseif ($Visite->etat_visite=="Terminé")
+                                { ?>
+                                <td><h5><b class="label label-warning col-md-8 btn">{{$Visite->etat_visite}}</b></h5></td>
+                                <?php   }
+                                else
+                                { ?>
+                                <td><h5><b class="label label-danger col-md-8 btn">{{$Visite->etat_visite}}</b></h5></td>
+                                <?php
+                                }
+                                ?>
+
+
+
+
+
+
                             </tr>
                               <?php  }  ?>
                         @endforeach

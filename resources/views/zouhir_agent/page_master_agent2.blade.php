@@ -335,7 +335,7 @@ desired effect
                 <li class="active"><a href="/agent1"> <!--<i class="fa fa-link"></i>--> <span>Liste Visiteur</span></a></li>
                 <li><a href="/liste_employe"><!--<i class="fa fa-link"></i>-->  <span>Liste Employe</span></a></li>
                 <li class="treeview">
-                    <a href="liste_service"><!--<i class="fa fa-link"></i>-->  <span>Liste Service</span>
+                    <a href="/liste_service"><!--<i class="fa fa-link"></i>-->  <span>Liste Service</span>
                         <span class="pull-right-container">
                 <i class="fa fa-angle-left pull-right"></i>
               </span>
@@ -484,18 +484,18 @@ desired effect
      Both of these plugins are recommended to enhance the
      user experience. -->
 
-     <script>
-  $(function () {
-    $('.datatables').DataTable();
-    $('#example2').DataTable({
-      'paging'      : true,
-      'lengthChange': false,
-      'searching'   : false,
-      'ordering'    : true,
-      'info'        : true,
-      'autoWidth'   : false
+<script>
+    $(function () {
+        $('.datatables').DataTable();
+        $('#example2').DataTable({
+            'paging'      : true,
+            'lengthChange': false,
+            'searching'   : false,
+            'ordering'    : true,
+            'info'        : true,
+            'autoWidth'   : false
+        })
     })
-  })
 </script>
 </body>
 </html>
